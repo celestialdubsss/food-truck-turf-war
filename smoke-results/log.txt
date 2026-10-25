@@ -1,0 +1,4 @@
+room code RYAEQ
+guest1 PAGEERROR Cannot assign to read only property 'position' of object '#<Wn>' TypeError: Cannot assign to read only property 'position' of object '#<Wn>' |     at Function.assign (<anonymous>) |     at buildBeard (http://localhost:8080/index.html?room=RYAEQ:1052:23)
+SMOKE FAIL page.waitForFunction: Timeout 60000ms exceeded. page.waitForFunction: Timeout 60000ms exceeded. |     at open (/home/runner/work/food-truck-turf-war/food-truck-turf-war/tests/smoke.mjs:13:29) |     at /home/runner/work/food-truck-turf-war/food-truck-turf-war/async file:/home/runner/work/food-truck-turf-war/food-truck-turf-war/tests/smoke.mjs:24:12
+errors {"host":0,"guest1":1}
