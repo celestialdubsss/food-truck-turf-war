@@ -1049,7 +1049,7 @@ function buildBeard(head,cfg){const n=(BEARDS[cfg.beard]||BEARDS[0]).n;if(n==='N
     case 'Full beard':region(fullFn(.88,.03,.06));region(mustacheFn(.33,.55,.592,.03),R+.006);break;
     case 'Long wizard beard':region(fullFn(.88,.03,.06));region(mustacheFn(.34,.55,.595,.032),R+.006);G.push(xf(new THREE.ConeGeometry(.17,.6,12,4),0,-.62,.2,.28,0,Math.PI,1,1,.7));break;
     case 'Braided beard':region(fullFn(.85,.025,.04));region(mustacheFn(.32,.552,.59,.024),R+.004);G.push(...chainGeo([new THREE.Vector3(0,-.32,.24),new THREE.Vector3(0,-.42,.27),new THREE.Vector3(0,-.56,.27)],.045,.045,.4));
-      head.add(Object.assign(new THREE.Mesh(new THREE.TorusGeometry(.03,.012,6,12),cphong('#C9A227')),{position:new THREE.Vector3(0,-.58,.27)}));break;
+      {const bead=new THREE.Mesh(new THREE.TorusGeometry(.03,.012,6,12),cphong('#C9A227'));bead.position.set(0,-.58,.27);head.add(bead);}break;
     case 'Mutton chops':region(chopsFn);break;
     case 'Friendly chops':region(chopsFn);region(mustacheFn(.56,.552,.59,.022));break;
     case 'Anchor beard':region((p,az)=>{const a=Math.abs(az);if(a<.5&&p>.7&&p<jawP(az)+.05)return .02;if(a<.12&&p>.672&&p<.72)return .012;return -1;});region(mustacheFn(.3,.556,.588,.02));break;
@@ -4771,6 +4771,7 @@ let netCfgT=null;function netPushCfg(){if(!NET.mode||G.team==null)return;clearTi
 function netRenderRoom(){const el=$('netRoom');if(!el)return;if(!NET.mode){el.hidden=true;return;}el.hidden=false;
   const nl=NET.nl;const ps=nl?Object.entries(nl.pl).filter(([,p])=>p.on!==false):[];
   el.innerHTML=`<p class="lbl">Room code</p><b class="code">${NET.code}</b><button class="mini" type="button" id="netCopy">Copy invite link</button>
+    <p class="sub" style="margin:6px 0 0;font-size:12px">${isHost()?'You are the host. Keep this tab open and in front, or the game pauses for everyone.':'Keep this tab open while you play.'}</p>
     <ul>${ps.map(([pid,p])=>`<li>${pid===NET.pid?'<b>':''}${esc(chef(p.name))}${pid===NET.pid?' (you)</b>':''}${pid==='h'?' · host':''}<small>${p.team!=null?'Team '+(p.team+1):'picking'}${p.rd?' · ready':''}</small></li>`).join('')}</ul>`;
   $('netCopy').onclick=()=>{const url=netInviteUrl();try{navigator.clipboard.writeText(url).then(()=>netFlash('Invite link copied'),()=>prompt('Copy this link',url));}catch(_){prompt('Copy this link',url);}};}
 function netInviteUrl(){try{const u=new URL(location.href);u.search='';u.hash='';u.searchParams.set('room',NET.code);return u.toString();}catch(_){return location.href.split('?')[0]+'?room='+NET.code;}}
