@@ -1,0 +1,26 @@
+name: smoke
+on:
+  push:
+    branches: [smoke]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm i --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - run: node tests/smoke.mjs
+        continue-on-error: true
+      - name: Save results
+        run: |
+          git config user.name "smoke-bot"
+          git config user.email "smoke-bot@users.noreply.github.com"
+          git add -f smoke-results
+          git commit -m "smoke results [skip ci]" || true
+          git push || true
