@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Food Truck Turf War: race to the store, shop, then out-cook the other trucks. Play solo or online with friends.">
 <title>Food Truck Turf War</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -3090,7 +3095,7 @@ function addProp(g,kind){if(!kind)return;const p=new THREE.Group();p.position.se
   else if(kind==='cup'){add(new THREE.CylinderGeometry(.06,.045,.16,10),colMat(pick(['#E5483B','#2F7FD8','#FFFFFF'])));}
   else if(kind==='cotton'){add(new THREE.CylinderGeometry(.008,.008,.3,4),colMat('#F4EFE6'));const c=add(new THREE.IcosahedronGeometry(.13,1),colMat(pick(['#F7A8C4','#9CD8F0'])),0,.2,0);}
   else if(kind==='balloon'){p.position.set(-.36,1.35,.1);add(new THREE.CylinderGeometry(.005,.005,1.2,4),colMat('#FFFFFF'),0,.1,0);const b=add(new THREE.SphereGeometry(.22,12,10),colMat(pick(['#E5483B','#F2B705','#2F7FD8','#F0509E'])),0,.85,0);b.scale.y=1.2;}
-  else if(kind==='corndog'){add(new THREE.CylinderGeometry(.006,.006,.16,4),colMat('#F4EFE6'),0,-.06,0);add(new THREE.CapsuleGeometry?new THREE.CapsuleGeometry(.04,.14,4,8):new THREE.CylinderGeometry(.04,.04,.2,8),colMat('#C98A3A'),0,.08,0);}
+  else if(kind==='corndog'){add(new THREE.CylinderGeometry(.006,.006,.16,4),colMat('#F4EFE6'),0,-.06,0);add(THREE.CapsuleGeometry?new THREE.CapsuleGeometry(.04,.14,4,8):new THREE.CylinderGeometry(.04,.04,.2,8),colMat('#C98A3A'),0,.08,0);}
   else if(kind==='boba'){add(new THREE.CylinderGeometry(.055,.045,.18,10),cachedMat('boba',()=>new THREE.MeshPhongMaterial({color:0xD9B48A,transparent:true,opacity:.85})));const s=add(new THREE.CylinderGeometry(.012,.012,.14,5),colMat('#F0509E'),.01,.12,0);}
   else if(kind==='lantern'){add(new THREE.CylinderGeometry(.006,.006,.6,4),colMat('#6B4A2E'),0,.2,0).rotation.z=.5;const l=add(new THREE.SphereGeometry(.1,8,6),cachedMat('lan1',()=>new THREE.MeshBasicMaterial({color:0xE5483B})),-.14,.45,0);l.scale.y=1.3;}
   else if(kind==='skewer'){add(new THREE.CylinderGeometry(.005,.005,.26,4),colMat('#C9A66B'));for(let i=0;i<3;i++)add(new THREE.BoxGeometry(.05,.04,.05),colMat(['#8B4A20','#E5483B','#2BAA5E'][i]),0,.04+i*.05,0);}
@@ -5000,7 +5005,9 @@ function netPublishEvent(dt){if(!NET.mode||G.phase!=='event')return;
 let mateKitKey='';
 function netKitchenMate(dt){if(!E.inKitchen||!KT.grills||!humanMate())return;const mp=netMatePid(),ps=NET.pst[mp];if(!ps)return;
   if(KT.partner){const z=isCaptain()?(ps.kz&&ps.kz.z):(ps.kit&&ps.kit.z);const yw=isCaptain()?(ps.kz&&ps.kz.yw):(ps.kit&&ps.kit.yw);
-    if(z!=null){const p=KT.partner.position;const tx=laneX(1-mySeat()),k=Math.min(1,dt*10),moving=Math.abs(z-p.z)>.03;p.x+=(tx-p.x)*k;p.z+=(z-p.z)*k;KT.partner.rotation.y=moving?(z>p.z?0:Math.PI):(Math.PI/2+(yw||0)-Math.PI);animateChar(KT.partner,dt,moving);}}
+    if(z!=null){const p=KT.partner.position;const tx=laneX(1-mySeat()),k=Math.min(1,dt*10),moving=Math.abs(z-p.z)>.03;p.x+=(tx-p.x)*k;p.z+=(z-p.z)*k;KT.partner.rotation.y=moving?(z>p.z?0:Math.PI):((yw||0)+Math.PI/2);animateChar(KT.partner,dt,moving);
+    /* fade your partner out when they're right in front of your face, so they never block the grills */
+    const near=Math.hypot(p.x-laneX(mySeat()),p.z-KT.z)<1.3;if(near!==KT.partnerFaded){KT.partnerFaded=near;KT.partner.traverse(o=>{if(!o.isMesh||!o.material||Array.isArray(o.material))return;if(!o.userData.fadeMat){o.userData.solidMat=o.material;o.userData.fadeMat=o.material.clone();o.userData.fadeMat.transparent=true;o.userData.fadeMat.opacity=.22;o.userData.fadeMat.depthWrite=false;}o.material=near?o.userData.fadeMat:o.userData.solidMat;});}}}
   if(isCaptain())return;const k=ps.kit;if(!k)return;const key=JSON.stringify([k.g,k.pd,k.sv,k.mh]);if(key===mateKitKey)return;mateKitKey=key;
   const mk=(cid,k2)=>{const c=custById(cid);if(!c)return null;return {c,req:c.request||null,items:[],grill:k2};};
   k.g.forEach((gs,i)=>{const g=KT.grills[i];if(!gs){if(g.order){if(g.order.c){g.order.c.order=null;}g.order=null;g.items=[];g.done=false;g.q=null;g.cooking=KT.skill&&KT.skill.k===i?99:0;updateGrillVisual(g);}return;}
