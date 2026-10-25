@@ -1,23 +1,24 @@
-coverage {"built":705,"errs":["wear fair: THREE.CapsuleGeometry is not a constructor","wear fair: THREE.CapsuleGeometry is not a constructor"],"nerr":2}
-room code NDZYM
+coverage {"built":707,"errs":[],"nerr":0}
+room code LHXNK
 joined
-picked {"ph":"lobby","stage":"team","team":0,"seat":0,"mode":"host","code":"NDZYM","err":""}
-picked {"ph":"lobby","stage":"team","team":0,"seat":1,"mode":"client","code":"NDZYM","err":""}
-picked {"ph":"lobby","stage":"team","team":2,"seat":0,"mode":"client","code":"NDZYM","err":""}
+picked {"ph":"lobby","stage":"team","team":0,"seat":0,"mode":"host","code":"LHXNK","err":""}
+picked {"ph":"lobby","stage":"team","team":0,"seat":1,"mode":"client","code":"LHXNK","err":""}
+picked {"ph":"lobby","stage":"team","team":2,"seat":0,"mode":"client","code":"LHXNK","err":""}
 agreed [true,true,true,true,true]
 agreed [true,true,true,true,true]
 agreed [true,true,true,true,true]
 race started
-store {"ph":"store","stage":"wait","leg":"store","team":0,"seat":0,"mode":"host","code":"NDZYM","err":""}
-store {"ph":"store","stage":"wait","leg":"store","team":0,"seat":1,"mode":"client","code":"NDZYM","err":""}
-store {"ph":"results","stage":"wait","leg":"store","team":2,"seat":0,"mode":"client","code":"NDZYM","err":""}
+TIMEOUT host store
+store {"ph":"drive","stage":"wait","leg":"store","team":0,"seat":0,"mode":"host","code":"LHXNK","err":""}
+store {"ph":"drive","stage":"wait","leg":"store","team":0,"seat":1,"mode":"client","code":"LHXNK","err":""}
+store {"ph":"drive","stage":"wait","leg":"store","team":2,"seat":0,"mode":"client","code":"LHXNK","err":""}
 event leg
-TIMEOUT planning
-service {"cust":5,"stats":["0/$0","0/$0","0/$0","0/$0"]}
-service {"cust":4,"stats":["0/$0","0/$0","0/$0","0/$0"]}
-service {"cust":5,"stats":["0/$0","0/$0","0/$0","0/$0"]}
+TIMEOUT service
+service {"cust":0,"stats":["0/$0","0/$0","0/$0","0/$0"]}
+service {"cust":0,"stats":["0/$0","0/$0","0/$0","0/$0"]}
+service {"cust":0,"stats":["0/$0","0/$0","0/$0","0/$0"]}
 TIMEOUT final
-final {"ph":"service","stats":[[0,3,48],[1,2,30],[2,0,0],[3,2,29]]}
-final {"ph":"service","stats":[[0,3,48],[1,2,30],[2,0,0],[3,2,29]]}
-final {"ph":"service","stats":[[0,3,48],[1,2,30],[2,0,0],[3,2,29]]}
+final {"ph":"dishes","stats":[[0,0,0],[1,0,0],[2,0,0],[3,0,0]]}
+final {"ph":"dishes","stats":[[0,0,0],[1,0,0],[2,0,0],[3,0,0]]}
+final {"ph":"dishes","stats":[[0,0,0],[1,0,0],[2,0,0],[3,0,0]]}
 errors {"host":0,"guest1":0,"guest2":0}
