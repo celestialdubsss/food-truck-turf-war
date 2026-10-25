@@ -18,6 +18,17 @@ const shot=async(p,n)=>{try{await p.evaluate(()=>window.__draw=1);await p.waitFo
 const st=p=>p.evaluate(()=>JSON.stringify({ph:G.phase,stage:L.stage,leg:G.leg,eph:E.phase,team:G.team,seat:NET.seat,mode:NET.mode,code:NET.code,err:(document.getElementById('errBox')||{}).textContent||''}));
 try{
   const H=await open('host','http://localhost:8080/index.html');
+  // coverage: every customization option, random and themed crowd chefs, and every event's grounds, built with the real three.js
+  const cov=await H.evaluate(()=>{const errs=[];let built=0;const cfg=randomChar();
+    for(const body of ['m','f'])for(const [key,list] of [['hair',HAIRS],['face',FACES],['beard',BEARDS],['glasses',GLASSES],['top',TOPS],['bottom',BOTTOMS],['outfit',OUTFITS]])for(let i=0;i<list.length;i++){
+      const c=Object.assign({},cfg,{body,[key]:i,thicc:Math.random(),height:Math.random(),hair2:i%2?'#E5483B':null});if(key!=='outfit')c.outfit=0;try{makeCharacter(c);built++;}catch(e){errs.push(key+' '+i+': '+e.message);}}
+    for(let i=0;i<80;i++){try{makeCharacter(randomChar());built++;}catch(e){errs.push('rand: '+e.message);}}
+    for(const w of Object.keys(WEAR))for(let i=0;i<12;i++){try{const c=themedChar(w);const ch=makeCharacter(c);addHat(ch,c.wear&&c.wear.hat,c);addProp(new THREE.Group(),c.wear&&c.wear.prop);built++;}catch(e){errs.push('wear '+w+': '+e.message);}}
+    const keep=G.event;for(const ev of EVENTS){G.event=ev;try{buildCity();built++;}catch(e){errs.push('event '+ev+': '+e.message+' '+(e.stack||'').split('\n')[1]);}}G.event=keep;
+    return {built,errs:errs.slice(0,40),nerr:errs.length};});
+  L('coverage',cov);
+  await H.reload();await H.waitForFunction(()=>typeof L!=='undefined'&&L.stage==='name',null,{timeout:60000});
+  await H.evaluate(()=>{const r=renderer.render.bind(renderer);let n=0;renderer.render=(...a)=>{if(window.__draw||++n%12===0)r(...a);};});
   await shot(H,'01-name');
   await H.fill('#playerName','Hosty');await H.click('#nameGo');await H.waitForTimeout(400);await shot(H,'02-mode');
   await H.click('#nHost');await H.waitForFunction(()=>NET.code,null,{timeout:30000});const code=await H.evaluate(()=>NET.code);L('room code',code);await shot(H,'03-pick-host');
@@ -26,7 +37,8 @@ try{
   const G2=await open('guest2',`http://localhost:8080/index.html?room=${code}`);await G2.fill('#playerName','Gus');await G2.click('#nameGo');
   await G2.waitForFunction(()=>NET.mode==='client',null,{timeout:30000});L('joined');
   await H.waitForTimeout(1000);
-  await H.evaluate(()=>pickTruck(0));await H.waitForTimeout(800);await G1.evaluate(()=>pickTruck(0));await G1.waitForTimeout(800);await G2.evaluate(()=>pickTruck(2));await H.waitForTimeout(1500);
+  const stageIs=(p,v)=>p.waitForFunction(v2=>L.stage===v2,v,{timeout:20000});
+  await H.evaluate(()=>pickTruck(0));await stageIs(H,'team');await G1.evaluate(()=>pickTruck(0));await stageIs(G1,'team');await G2.evaluate(()=>pickTruck(2));await stageIs(G2,'team');await H.waitForTimeout(1500);
   for(const p of [H,G1,G2])L('picked',await st(p));
   await shot(G1,'04-team-guest1');
   for(const p of [H,G1])await p.evaluate(()=>{choose('style',2);choose('color','#E5483B');choose('accent','#F2B705');choose('mascot',7);});
