@@ -1,4 +1,36 @@
-room code RYAEQ
-guest1 PAGEERROR Cannot assign to read only property 'position' of object '#<Wn>' TypeError: Cannot assign to read only property 'position' of object '#<Wn>' |     at Function.assign (<anonymous>) |     at buildBeard (http://localhost:8080/index.html?room=RYAEQ:1052:23)
-SMOKE FAIL page.waitForFunction: Timeout 60000ms exceeded. page.waitForFunction: Timeout 60000ms exceeded. |     at open (/home/runner/work/food-truck-turf-war/food-truck-turf-war/tests/smoke.mjs:13:29) |     at /home/runner/work/food-truck-turf-war/food-truck-turf-war/async file:/home/runner/work/food-truck-turf-war/food-truck-turf-war/tests/smoke.mjs:24:12
-errors {"host":0,"guest1":1}
+room code STVJV
+joined
+host console.error TypeError: cg.applyQuaternion is not a function
+    at buildHair (http://localhost:8080/index.html:1013:12)
+    at makeCharacter (http://localhost:8080/index.html:1298:3)
+    at http://localhost:8080/index.html:1476:60
+    at Array.forEach (<anonymous>)
+    at rebuildLobbyChars (http://localhost:808
+host console.error TypeError: cg.applyQuaternion is not a function
+    at buildHair (http://localhost:8080/index.html:1013:12)
+    at makeCharacter (http://localhost:8080/index.html:1298:3)
+    at http://localhost:8080/index.html:1476:60
+    at Array.forEach (<anonymous>)
+    at rebuildLobbyChars (http://localhost:808
+host console.error TypeError: cg.applyQuaternion is not a function
+    at buildHair (http://localhost:8080/index.html:1013:12)
+    at makeCharacter (http://localhost:8080/index.html:1298:3)
+    at http://localhost:8080/index.html:1476:60
+    at Array.forEach (<anonymous>)
+    at rebuildLobbyChars (http://localhost:808
+guest1 PAGEERROR cg.applyQuaternion is not a function TypeError: cg.applyQuaternion is not a function |     at buildHair (http://localhost:8080/index.html?room=STVJV:977:145) |     at makeCharacter (http://localhost:8080/index.html?room=STVJV:1298:3)
+host console.error TypeError: cg.applyQuaternion is not a function
+    at buildHair (http://localhost:8080/index.html:1013:12)
+    at makeCharacter (http://localhost:8080/index.html:1298:3)
+    at http://localhost:8080/index.html:1476:60
+    at Array.forEach (<anonymous>)
+    at rebuildLobbyChars (http://localhost:808
+picked {"ph":"lobby","stage":"pick","team":null,"seat":0,"mode":"host","code":"STVJV","err":""}
+picked {"ph":"lobby","stage":"team","team":0,"seat":1,"mode":"client","code":"STVJV","err":"Something broke: Uncaught TypeError: cg.applyQuaternion is not a function (line 977). Send this to Claude."}
+picked {"ph":"lobby","stage":"team","team":2,"seat":0,"mode":"client","code":"STVJV","err":""}
+SMOKE FAIL page.evaluate: TypeError: Cannot read properties of undefined (reading 'style')
+    at choose (http://localhost:8080/index.html:1610:37)
+    at eval (eval at evaluate (:234:30), <anonymous>:1:6)
+    at UtilityScript.evaluate (<anonymous>:236:17)
+    at UtilityScript.<anonymous> (<anonymous>:1:44) page.evaluate: TypeError: Cannot read properties of undefined (reading 'style') |     at choose (http://localhost:8080/index.html:1610:37) |     at eval (eval at evaluate (:234:30), <anonymous>:1:6) |     at UtilityScript.evaluate (<anonymous>:236:17)
+errors {"host":4,"guest1":1,"guest2":0}
