@@ -1,12 +1,5 @@
 {
- "host": [
-  "TypeError: cg.applyQuaternion is not a function\n    at buildHair (http://localhost:8080/index.html:1013:12)\n    at makeCharacter (http://localhost:8080/index.html:1298:3)\n    at http://localhost:8080/index.html:1476:60\n    at Array.forEach (<anonymous>)\n    at rebuildLobbyChars (http://localhost:8080/index.html:1476:36)\n    at rebuildLobbyTruck (http://localhost:8080/index.html:1472:3)\n    at netApplyLobby (http://localhost:8080/index.html:4743:43)\n    at netTick (http://localhost:8080/index.html:4679:110)\n    at frame (http://localhost:8080/index.html:5054:19)",
-  "TypeError: cg.applyQuaternion is not a function\n    at buildHair (http://localhost:8080/index.html:1013:12)\n    at makeCharacter (http://localhost:8080/index.html:1298:3)\n    at http://localhost:8080/index.html:1476:60\n    at Array.forEach (<anonymous>)\n    at rebuildLobbyChars (http://localhost:8080/index.html:1476:36)\n    at rebuildLobbyTruck (http://localhost:8080/index.html:1472:3)\n    at netApplyLobby (http://localhost:8080/index.html:4743:43)\n    at netTick (http://localhost:8080/index.html:4679:110)\n    at frame (http://localhost:8080/index.html:5054:19)",
-  "TypeError: cg.applyQuaternion is not a function\n    at buildHair (http://localhost:8080/index.html:1013:12)\n    at makeCharacter (http://localhost:8080/index.html:1298:3)\n    at http://localhost:8080/index.html:1476:60\n    at Array.forEach (<anonymous>)\n    at rebuildLobbyChars (http://localhost:8080/index.html:1476:36)\n    at rebuildLobbyTruck (http://localhost:8080/index.html:1472:3)\n    at netApplyLobby (http://localhost:8080/index.html:4743:43)\n    at netTick (http://localhost:8080/index.html:4679:110)\n    at frame (http://localhost:8080/index.html:5054:19)",
-  "TypeError: cg.applyQuaternion is not a function\n    at buildHair (http://localhost:8080/index.html:1013:12)\n    at makeCharacter (http://localhost:8080/index.html:1298:3)\n    at http://localhost:8080/index.html:1476:60\n    at Array.forEach (<anonymous>)\n    at rebuildLobbyChars (http://localhost:8080/index.html:1476:36)\n    at rebuildLobbyTruck (http://localhost:8080/index.html:1472:3)\n    at netApplyLobby (http://localhost:8080/index.html:4743:43)\n    at netTick (http://localhost:8080/index.html:4679:110)\n    at frame (http://localhost:8080/index.html:5054:19)"
- ],
- "guest1": [
-  "pageerror: cg.applyQuaternion is not a function"
- ],
+ "host": [],
+ "guest1": [],
  "guest2": []
 }

@@ -1,36 +1,23 @@
-room code STVJV
+coverage {"built":705,"errs":["wear fair: THREE.CapsuleGeometry is not a constructor","wear fair: THREE.CapsuleGeometry is not a constructor"],"nerr":2}
+room code NDZYM
 joined
-host console.error TypeError: cg.applyQuaternion is not a function
-    at buildHair (http://localhost:8080/index.html:1013:12)
-    at makeCharacter (http://localhost:8080/index.html:1298:3)
-    at http://localhost:8080/index.html:1476:60
-    at Array.forEach (<anonymous>)
-    at rebuildLobbyChars (http://localhost:808
-host console.error TypeError: cg.applyQuaternion is not a function
-    at buildHair (http://localhost:8080/index.html:1013:12)
-    at makeCharacter (http://localhost:8080/index.html:1298:3)
-    at http://localhost:8080/index.html:1476:60
-    at Array.forEach (<anonymous>)
-    at rebuildLobbyChars (http://localhost:808
-host console.error TypeError: cg.applyQuaternion is not a function
-    at buildHair (http://localhost:8080/index.html:1013:12)
-    at makeCharacter (http://localhost:8080/index.html:1298:3)
-    at http://localhost:8080/index.html:1476:60
-    at Array.forEach (<anonymous>)
-    at rebuildLobbyChars (http://localhost:808
-guest1 PAGEERROR cg.applyQuaternion is not a function TypeError: cg.applyQuaternion is not a function |     at buildHair (http://localhost:8080/index.html?room=STVJV:977:145) |     at makeCharacter (http://localhost:8080/index.html?room=STVJV:1298:3)
-host console.error TypeError: cg.applyQuaternion is not a function
-    at buildHair (http://localhost:8080/index.html:1013:12)
-    at makeCharacter (http://localhost:8080/index.html:1298:3)
-    at http://localhost:8080/index.html:1476:60
-    at Array.forEach (<anonymous>)
-    at rebuildLobbyChars (http://localhost:808
-picked {"ph":"lobby","stage":"pick","team":null,"seat":0,"mode":"host","code":"STVJV","err":""}
-picked {"ph":"lobby","stage":"team","team":0,"seat":1,"mode":"client","code":"STVJV","err":"Something broke: Uncaught TypeError: cg.applyQuaternion is not a function (line 977). Send this to Claude."}
-picked {"ph":"lobby","stage":"team","team":2,"seat":0,"mode":"client","code":"STVJV","err":""}
-SMOKE FAIL page.evaluate: TypeError: Cannot read properties of undefined (reading 'style')
-    at choose (http://localhost:8080/index.html:1610:37)
-    at eval (eval at evaluate (:234:30), <anonymous>:1:6)
-    at UtilityScript.evaluate (<anonymous>:236:17)
-    at UtilityScript.<anonymous> (<anonymous>:1:44) page.evaluate: TypeError: Cannot read properties of undefined (reading 'style') |     at choose (http://localhost:8080/index.html:1610:37) |     at eval (eval at evaluate (:234:30), <anonymous>:1:6) |     at UtilityScript.evaluate (<anonymous>:236:17)
-errors {"host":4,"guest1":1,"guest2":0}
+picked {"ph":"lobby","stage":"team","team":0,"seat":0,"mode":"host","code":"NDZYM","err":""}
+picked {"ph":"lobby","stage":"team","team":0,"seat":1,"mode":"client","code":"NDZYM","err":""}
+picked {"ph":"lobby","stage":"team","team":2,"seat":0,"mode":"client","code":"NDZYM","err":""}
+agreed [true,true,true,true,true]
+agreed [true,true,true,true,true]
+agreed [true,true,true,true,true]
+race started
+store {"ph":"store","stage":"wait","leg":"store","team":0,"seat":0,"mode":"host","code":"NDZYM","err":""}
+store {"ph":"store","stage":"wait","leg":"store","team":0,"seat":1,"mode":"client","code":"NDZYM","err":""}
+store {"ph":"results","stage":"wait","leg":"store","team":2,"seat":0,"mode":"client","code":"NDZYM","err":""}
+event leg
+TIMEOUT planning
+service {"cust":5,"stats":["0/$0","0/$0","0/$0","0/$0"]}
+service {"cust":4,"stats":["0/$0","0/$0","0/$0","0/$0"]}
+service {"cust":5,"stats":["0/$0","0/$0","0/$0","0/$0"]}
+TIMEOUT final
+final {"ph":"service","stats":[[0,3,48],[1,2,30],[2,0,0],[3,2,29]]}
+final {"ph":"service","stats":[[0,3,48],[1,2,30],[2,0,0],[3,2,29]]}
+final {"ph":"service","stats":[[0,3,48],[1,2,30],[2,0,0],[3,2,29]]}
+errors {"host":0,"guest1":0,"guest2":0}
